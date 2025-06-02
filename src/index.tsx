@@ -43,6 +43,7 @@ const rootRoute = createRootRoute({
 interface IndexSearchParams {
   iTwinId: string;
   iModelId: string;
+  changesetId?: string;
 }
 
 const indexRoute = createRoute({
@@ -52,6 +53,7 @@ const indexRoute = createRoute({
       (search.iTwinId as string | undefined) ?? import.meta.env.IMJS_ITWIN_ID;
     const iModelId =
       (search.iModelId as string | undefined) ?? import.meta.env.IMJS_IMODEL_ID;
+    const changesetId = search.changesetId as string | undefined;
     if (!iTwinId || !iModelId) {
       throw new Error(
         "Please add a valid iTwin ID and iModel ID in the .env file and restart the application or add it to the `iTwinId`/`iModelId` query parameter in the url and refresh the page. See the README for more information."
@@ -60,6 +62,7 @@ const indexRoute = createRoute({
     return {
       iTwinId,
       iModelId,
+      changesetId,
     };
   },
   path: "/",

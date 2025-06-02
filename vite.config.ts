@@ -59,5 +59,10 @@ export default defineConfig(({ mode }) => {
       ],
     },
     envPrefix: ENV_PREFIX,
+    define: {
+      "process.env.IMJS_URL_PREFIX": env.IMJS_URL_PREFIX
+        ? `"${env.IMJS_URL_PREFIX}"`
+        : `""`,
+    },
   };
 });

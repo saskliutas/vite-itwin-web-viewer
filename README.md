@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# iTwin Viewer App Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app is built using [vite](https://vite.dev/).
 
-Currently, two official plugins are available:
+## Environment Variables
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prior to running the app, you will need to add OIDC client configuration to the variables in the .env file:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+# ---- Authorization Client Settings ----
+IMJS_AUTH_CLIENT_CLIENT_ID=""
+IMJS_AUTH_CLIENT_REDIRECT_URI=""
+IMJS_AUTH_CLIENT_LOGOUT_URI=""
+IMJS_AUTH_CLIENT_SCOPES=""
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- You can generate a [test client](https://developer.bentley.com/tutorials/web-application-quick-start/#3-register-an-application) to get started.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Viewer expects the `itwin-platform` scope to be set.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- The application will use the path of the redirect URI to handle the redirection, it must simply match what is defined in your client.
+
+- When you are ready to build a production application, [register here](https://developer.bentley.com/register/).
+
+You should also add a valid iTwinId and iModelId for your user in the this file:
+
 ```
+# ---- Test ids ----
+IMJS_ITWIN_ID = ""
+IMJS_IMODEL_ID = ""
+```
+
+- For the IMJS_ITWIN_ID variable, you can use the id of one of your existing iTwins. You can obtain their ids via the [iTwin REST APIs](https://developer.bentley.com/apis/itwins/operations/get-itwin/).
+
+- For the IMJS_IMODEL_ID variable, use the id of an iModel that belongs to the iTwin that you specified in the IMJS_ITWIN_ID variable. You can obtain iModel ids via the [iModel REST APIs](https://developer.bentley.com/apis/imodels-v2/operations/get-imodel-details/).
+
+- Alternatively, you can [generate a test iModel](https://developer.bentley.com/tutorials/web-application-quick-start/#4-create-an-imodel) to get started without an existing iModel.
+
+- If at any time you wish to change the iModel that you are viewing, you can change the values of the iTwinId or iModelId query parameters in the url (i.e. localhost:3000?iTwinId=myNewITwinId&iModelId=myNewIModelId)
+
+## Running App
+
+Run the following:
+
+```sh
+pnpm install
+pnpm build
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Next Steps
+
+- [iTwin Viewer options](https://www.npmjs.com/package/@itwin/web-viewer-react)
+
+- [Extending the iTwin Viewer](https://developer.bentley.com/tutorials/itwin-viewer-hello-world/)
+
+- [Using the iTwin Platform](https://developer.bentley.com/)
+
+- [iTwin Developer Program](https://www.youtube.com/playlist?list=PL6YCKeNfXXd_dXq4u9vtSFfsP3OTVcL8N)
