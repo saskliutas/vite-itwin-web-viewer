@@ -1,6 +1,10 @@
 # iTwin Viewer App Template
 
-This app is built using [vite](https://vite.dev/).
+This template is built using [vite](https://vite.dev/). To create app based on this template you can run:
+
+```sh
+npx degit saskliutas/vite-itwin-web-viewer#main my-project
+```
 
 ## Environment Variables
 
