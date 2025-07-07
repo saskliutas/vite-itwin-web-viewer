@@ -41,14 +41,6 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       strictPort: true,
     },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          // disable SASS deprecation warnings coming from AppUI. Can be removed after bump to 5.0
-          silenceDeprecations: ["global-builtin", "import"],
-        },
-      },
-    },
     resolve: {
       alias: [
         {
