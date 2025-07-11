@@ -9,7 +9,6 @@ import {
   ModelsTreeComponent,
 } from "@itwin/tree-widget-react";
 import { selectionStorage } from "../SelectionStorage";
-import { getSchemaContext } from "../SchemaContext";
 
 export const treeWidgetUiProvider = {
   id: "TreeWidgetUIProvider",
@@ -21,7 +20,7 @@ export const treeWidgetUiProvider = {
           getLabel: () => ModelsTreeComponent.getLabel(),
           render: (props) => (
             <ModelsTreeComponent
-              getSchemaContext={getSchemaContext}
+              getSchemaContext={(imodel) => imodel.schemaContext}
               density={props.density}
               selectionStorage={selectionStorage}
               selectionMode={"extended"}
@@ -35,7 +34,7 @@ export const treeWidgetUiProvider = {
           getLabel: () => CategoriesTreeComponent.getLabel(),
           render: (props) => (
             <CategoriesTreeComponent
-              getSchemaContext={getSchemaContext}
+              getSchemaContext={(imodel) => imodel.schemaContext}
               density={props.density}
               selectionStorage={selectionStorage}
               onPerformanceMeasured={props.onPerformanceMeasured}

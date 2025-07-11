@@ -27,7 +27,6 @@ import {
   MeasureToolsUiItemsProvider,
 } from "@itwin/measure-tools-react";
 import { selectionStorage } from "../SelectionStorage";
-import { getSchemaContext } from "../SchemaContext";
 import { treeWidgetUiProvider } from "./TreeWidgetUiProvider";
 import { propertyGridUiProvider } from "./PropertyGridUiProvider";
 
@@ -81,7 +80,6 @@ export function Viewer({ iTwinId, iModelId, changesetId }: ViewerProps) {
         propertyGridUiProvider,
       ]}
       selectionStorage={selectionStorage}
-      getSchemaContext={getSchemaContext}
     />
   );
 }
